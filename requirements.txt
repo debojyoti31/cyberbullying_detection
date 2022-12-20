@@ -1,0 +1,13 @@
+streamlit
+numpy
+pandas
+matplotlib
+scikit-learn
+seaborn
+nltk
+regex
+contractions
+autocorrect
+emoji
+unidecode
+wordcloud
