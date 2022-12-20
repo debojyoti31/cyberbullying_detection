@@ -581,5 +581,4 @@ with st.container():
                 st.subheader('Please enter a text!')
 
 with st.container():
-    st.write("Get In Touch With Me!")
-    st.write("[Github](https://github.com/debojyoti31)     [Facebook](https://www.facebook.com/debojyoti.mondal.1297)")
+    st.write("[Get In Touch With Me! :globe_with_meridians:](https://debojyoti31.github.io/)")
