@@ -562,7 +562,7 @@ with st.container():
             if input_text != '':
                 # preprocess
                 input_text = preprocess_text(input_text)
-                st.write('Keywords:', input_text)
+                st.write('Keywords:', input_text.split())
 
                 # vectorize
                 input_text = vec.transform([input_text]).toarray()
