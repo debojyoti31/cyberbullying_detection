@@ -535,7 +535,7 @@ fit_lenc = pickle.load(open('fit_lenc.pkl', 'rb'))
 
 
 
-st.title('Cyberbullying Detection WebApp)
+st.title('Cyberbullying Detection WebApp')
 
 with st.container():
     left_column, right_column = st.columns(2)
