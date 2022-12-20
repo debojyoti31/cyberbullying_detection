@@ -550,7 +550,6 @@ with st.container():
             - Ethnicity
             - Gender
             - Religion
-            - Other Cyberbullying
             - Not Cyberbullying  
             """
         )
