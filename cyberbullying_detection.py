@@ -564,7 +564,7 @@ with st.container():
             if input_text != '':
                 
                 input_text = preprocess_text(input_text)
-                st.write('Keywords:',  ', '.join(input_text.split())  )
+                st.write('Keywords :',  ', '.join(input_text.split())  )
 
                 
                 input_text = vec.transform([input_text]).toarray()
