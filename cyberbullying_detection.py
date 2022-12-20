@@ -559,8 +559,7 @@ with st.container():
         st.write("[Learn More about Cyberbullying >](https://www.unicef.org/end-violence/how-to-stop-cyberbullying)")
 
     with right_column:
-        input_text = txt = st.text_area('**Text to detect**', '''It was the best of times, it was the worst of times, it was the age of wisdom, (...)
-    ''')
+        input_text = txt = st.text_area('**Text to detect**', '''Love Conquers All.''')
         if st.button('Predict'):
             if input_text != '':
                 # preprocess
