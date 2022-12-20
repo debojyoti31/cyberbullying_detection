@@ -35,7 +35,7 @@ import emoji
 
 from nltk.corpus import stopwords
 
-
+nltk.download('wordnet')
 import unidecode
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 from PIL import Image #to load our image
