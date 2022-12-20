@@ -534,6 +534,7 @@ fit_lenc = pickle.load(open('fit_lenc.pkl', 'rb'))
 
 
 
+st.set_page_config(page_title="cyberbullying Detection", page_icon=":rotating_light:", layout="wide")
 
 st.title('Cyberbullying Detection WebApp')
 st.write('---')
