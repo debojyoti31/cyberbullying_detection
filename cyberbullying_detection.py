@@ -571,6 +571,7 @@ with st.container():
 
                 # display
                 st.subheader(fit_lenc.inverse_transform(y_pred)[0])
+		st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
                 
             else:
                 st.subheader('Please enter a text!')
