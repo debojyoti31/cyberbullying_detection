@@ -45,7 +45,7 @@ import pickle
 import nltk
 from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
-
+nltk.download('averaged_perceptron_tagger')
 
 # In[2]:
 
