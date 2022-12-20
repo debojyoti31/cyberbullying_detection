@@ -574,7 +574,7 @@ with st.container():
 
                 # display
                 st.write('Cyberbullying Type :')
-		st.subheader(fit_lenc.inverse_transform(y_pred)[0])
+                st.subheader(fit_lenc.inverse_transform(y_pred)[0])
                 st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
                 
             else:
