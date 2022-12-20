@@ -29,7 +29,7 @@ from sklearn.model_selection import train_test_split
 #Naive Bayes
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-
+nltk.download('stopwords')
 nltk.download('punkt')
 import emoji
 
