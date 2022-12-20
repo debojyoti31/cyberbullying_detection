@@ -562,18 +562,19 @@ with st.container():
         input_text = txt = st.text_area('**Text to detect**', '''Love Conquers All.''')
         if st.button('Predict'):
             if input_text != '':
-                # preprocess
+                
                 input_text = preprocess_text(input_text)
                 st.write('Keywords:',  ','.join(input_text.split())  )
 
-                # vectorize
+                
                 input_text = vec.transform([input_text]).toarray()
 
                 # predict
                 y_pred = model.predict(input_text)
 
                 # display
-                st.write('Cyberbullying Type :') st.subheader(fit_lenc.inverse_transform(y_pred)[0])
+		st.write('Cyberbullying Type :')
+                st.subheader(fit_lenc.inverse_transform(y_pred)[0])
                 st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
                 
             else:
