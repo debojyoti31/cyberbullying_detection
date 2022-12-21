@@ -571,10 +571,10 @@ with st.container():
                 st.write('Keywords :',  ', '.join(input_text.split())  )
 
                 
-                input_text = vec.transform([input_text]).toarray()
+                input_text1 = vec.transform([input_text]).toarray()
 
                 # predict
-                y_pred = model.predict(input_text)
+                y_pred = model.predict(input_text1)
 
                 if fit_lenc.inverse_transform(y_pred)[0] != 'not_cyberbullying':
                     # display
@@ -582,7 +582,8 @@ with st.container():
                     st.subheader(fit_lenc.inverse_transform(y_pred)[0])
                     st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
                 else:
-                    n_y_pred = n_model.predict(input_text)
+                    input_text2 = n_vec.transform([input_text]).toarray()
+                    n_y_pred = n_model.predict(input_text2)
                     st.write('**:red[Cyberbullying Type :]**')
                     st.subheader(n_fit_lenc.inverse_transform(n_y_pred)[0])
                     st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
