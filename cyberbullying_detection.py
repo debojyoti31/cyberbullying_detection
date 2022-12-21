@@ -605,6 +605,7 @@ with st.container():
             id = st.text_area('**Username without @**', '''imessi''')
 
             if st.button('Predict'):
+                st.write(':red[Scroll Down to see Result] :arrow_double_down:')
                 if id != '':
                     tweets_list1 = []
                     for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:'+str(id)).get_items()):
