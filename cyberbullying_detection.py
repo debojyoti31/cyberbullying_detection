@@ -575,8 +575,8 @@ with st.container():
             if st.button('Predict'):
                 if input_text != '':
                     input_text = emoji.demojize(input_text)
-                    input_text = preprocess_text(input_text)
                     input_text = GoogleTranslator(source='auto', target='en').translate(input_text)
+                    input_text = preprocess_text(input_text)
                     st.write('Keywords :',  ', '.join(input_text.split())  )
 
                     
