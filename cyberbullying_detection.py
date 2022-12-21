@@ -536,10 +536,6 @@ vec = pickle.load(open('count_vectorizer.pkl', 'rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 fit_lenc = pickle.load(open('fit_lenc.pkl', 'rb'))
 
-n_vec = pickle.load(open('n_count_vectorizer.pkl', 'rb'))
-n_model = pickle.load(open('n_model.pkl', 'rb'))
-n_fit_lenc = pickle.load(open('n_fit_lenc.pkl', 'rb'))
-
 
 st.set_page_config(page_title="cyberbullying Detection", page_icon=":rotating_light:", layout="wide")
 
