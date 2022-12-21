@@ -513,7 +513,6 @@ def lemmatize(sentence):
 
 
 def preprocess_text(text):
-    text=convert_emoji(text)
     # text=correct_word(text)
     text=remove_stopwords(text)
     text=case_convert(text)
@@ -523,6 +522,7 @@ def preprocess_text(text):
     text=remove_accents(text)
     text=remove_specials(text)
     text=normalize_spaces(text)
+    text=convert_emoji(text)
     text=lemmatize(text)
     return text
 
