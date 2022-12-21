@@ -614,12 +614,13 @@ with st.container():
                         tweets_list1.append([tweet.content, tweet.lang])                       
                     df = pd.DataFrame(tweets_list1, columns=['tweet', 'lang'])
                     df = df.dropna()
-                    st.dataframe(df)
 
                     for i in range(len(df.tweet)):
                         if df.lang.iloc[i] != 'en':
                             df.tweet.iloc[i] = GoogleTranslator(source='auto', target='en').translate(df.tweet.iloc[i])
                     df.tweet =  [preprocess_text(text) for text in df.tweet.values]
+                    st.write('Translated Tweet Keywords')
+                    st.dataframe(df)
 
 
                     list_input = vec.transform(df.tweet.values).toarray()
