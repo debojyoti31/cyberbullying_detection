@@ -619,7 +619,8 @@ with st.container():
                         if df.lang.iloc[i] != 'en':
                             df.tweet.iloc[i] = GoogleTranslator(source='auto', target='en').translate(df.tweet.iloc[i])
                     df.tweet =  [preprocess_text(text) for text in df.tweet.values]
-                    st.write('Translated Tweet Keywords')
+                    st.write('Translated Tweet Keywords :')
+                    df.dropna()
                     st.dataframe(df.tweet)
 
 
