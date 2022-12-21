@@ -576,7 +576,7 @@ with st.container():
                 # predict
                 y_pred = model.predict(input_text)
 
-                if y_pred != 'not_cyberbullying':
+                if fit_lenc.inverse_transform(y_pred)[0] != 'not_cyberbullying':
                     # display
                     st.write('**:red[Cyberbullying Type :]**')
                     st.subheader(fit_lenc.inverse_transform(y_pred)[0])
