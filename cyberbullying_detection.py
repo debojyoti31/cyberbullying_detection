@@ -57,7 +57,7 @@ def case_convert(text):
 def correct_word(text):
     return  Speller()(text)
 def convert_emoji(text):
-    return emoji.demojize('.'+text+'.')
+    return emoji.demojize(text)
 
 def remove_specials(text):
     return re.sub(r"[^a-zA-Z]"," ",text)
