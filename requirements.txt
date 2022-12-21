@@ -1,5 +1,7 @@
 streamlit
+snscrape
 numpy
+twint
 pandas>=0.23.0
 matplotlib
 scikit-learn
@@ -12,16 +14,3 @@ emoji
 unidecode
 wordcloud
 deep_translator
-nest_asyncio
-aiohttp==3.7.0
-aiodns
-beautifulsoup4
-cchardet
-dataclasses
-elasticsearch
-pysocks
-aiohttp_socks<=0.4.1
-schedule
-geopy
-fake-useragent
-googletransx
