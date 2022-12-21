@@ -569,7 +569,7 @@ with st.container():
 
 
 
-        option = st.selectbox('Select Input Type',('Single Text', 'Twitter Username'))
+        option = st.selectbox('**Select Input Type**',('Single Text', 'Twitter Username'))
         
         if option == 'Single Text':
             input_text = st.text_area('**Text to detect**', '''Love Conquers All.''')
