@@ -608,7 +608,7 @@ with st.container():
             if st.button('Predict'):
                 if id != '':
 
-                    # nest_asyncio.apply()
+                    nest_asyncio.apply()
                     c = twint.Config()
                     c.Username = id
                     c.Pandas = True
