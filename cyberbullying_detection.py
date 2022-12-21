@@ -574,8 +574,9 @@ with st.container():
             input_text = st.text_area('**Text to detect**', '''Love Conquers All.''')
             if st.button('Predict'):
                 if input_text != '':
-                    
+                    input_text = emoji.demojize(input_text)
                     input_text = preprocess_text(input_text)
+                    input_text = GoogleTranslator(source='auto', target='en').translate(input_text)
                     st.write('Keywords :',  ', '.join(input_text.split())  )
 
                     
