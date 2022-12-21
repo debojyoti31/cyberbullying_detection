@@ -1,5 +1,4 @@
 streamlit
-twint
 numpy
 pandas>=0.23.0
 matplotlib
