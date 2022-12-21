@@ -10,7 +10,7 @@ nltk
 regex
 contractions
 autocorrect
-emoji==1.7.0
+emoji
 unidecode
 wordcloud
 deep_translator
