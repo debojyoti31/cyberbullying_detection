@@ -550,7 +550,7 @@ with st.container():
         st.subheader("Hi, I am Debojyoti :wave:")
         st.write(
             """
-            This is a NLP Model trained on [47000 tweets](https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification) labelled according to the class of Cyberbullying:
+            This is a NLP Model trained on 50000 tweets labelled according to the class of Cyberbullying:
 
             - Age
             - Ethnicity
