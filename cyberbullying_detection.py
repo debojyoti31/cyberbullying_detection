@@ -56,8 +56,8 @@ def case_convert(text):
     return text.lower()
 def correct_word(text):
     return  Speller()(text)
-def convert_emoji(text):
-    return emoji.demojize(text)
+def convert_emoji():
+    df.tweet = [emoji.demojize(text) for text in df.tweet.values]
 
 def remove_specials(text):
     return re.sub(r"[^a-zA-Z]"," ",text)
@@ -513,7 +513,6 @@ def lemmatize(sentence):
 
 
 def preprocess_text(text):
-    text=convert_emoji(text)
     # text=correct_word(text)
     text=remove_stopwords(text)
     text=case_convert(text)
@@ -614,7 +613,7 @@ with st.container():
                         tweets_list1.append([tweet.content, tweet.lang])                       
                     df = pd.DataFrame(tweets_list1, columns=['tweet', 'lang'])
                     df.dropna(inplace=True)
-
+                    convert_emoji()
                     for i in range(len(df.tweet)):
                         if df.lang.iloc[i] != 'en':
                             df.tweet.iloc[i] = GoogleTranslator(source='auto', target='en').translate(df.tweet.iloc[i])
