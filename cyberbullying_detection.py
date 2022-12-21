@@ -456,14 +456,6 @@ def remove_stopwords(text):
 
 # In[6]:
 
-def remove_nonetype(text):
-    string = ""
-    for word in text.split(" "):
-        if type(word) == None:
-            continue
-        else:
-            string = string + " " + word
-    return string
 
 def remove_links(text):
     remove_https = re.sub(r'http\S+', '', text)
@@ -521,7 +513,6 @@ def lemmatize(sentence):
 
 
 def preprocess_text(text):
-    text=remove_nonetype(text)
     text=convert_emoji(text)
     # text=correct_word(text)
     text=remove_stopwords(text)
@@ -622,7 +613,7 @@ with st.container():
                             break
                         tweets_list1.append([tweet.content, tweet.lang])                       
                     df = pd.DataFrame(tweets_list1, columns=['tweet', 'lang'])
-                    df = df.dropna()
+                    df.dropna(inplace=True)
 
                     for i in range(len(df.tweet)):
                         if df.lang.iloc[i] != 'en':
@@ -630,7 +621,7 @@ with st.container():
                     df.tweet =  [preprocess_text(text) for text in df.tweet.values]
                     st.write('Translated Tweet Keywords :')
                     df = df.dropna()
-                    st.dataframe(df.tweet)
+                    df.dropna(inplace=True)
 
 
                     list_input = vec.transform(df.tweet.values).toarray()
