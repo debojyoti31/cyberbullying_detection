@@ -532,6 +532,9 @@ vec = pickle.load(open('count_vectorizer.pkl', 'rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 fit_lenc = pickle.load(open('fit_lenc.pkl', 'rb'))
 
+n_vec = pickle.load(open('n_count_vectorizer.pkl', 'rb'))
+n_model = pickle.load(open('n_model.pkl', 'rb'))
+n_fit_lenc = pickle.load(open('n_fit_lenc.pkl', 'rb'))
 
 
 st.set_page_config(page_title="cyberbullying Detection", page_icon=":rotating_light:", layout="wide")
@@ -553,6 +556,7 @@ with st.container():
             - Ethnicity
             - Gender
             - Religion
+            - Other Cyberbullying 
             - Not Cyberbullying  
             """
         )
@@ -572,10 +576,16 @@ with st.container():
                 # predict
                 y_pred = model.predict(input_text)
 
-                # display
-                st.write('**:red[Cyberbullying Type :]**')
-                st.subheader(fit_lenc.inverse_transform(y_pred)[0])
-                st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
+                if y_pred != 'not_cyberbullying':
+                    # display
+                    st.write('**:red[Cyberbullying Type :]**')
+                    st.subheader(fit_lenc.inverse_transform(y_pred)[0])
+                    st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
+                else:
+                    n_y_pred = n_model.predict(input_text)
+                    st.write('**:red[Cyberbullying Type :]**')
+                    st.subheader(n_fit_lenc.inverse_transform(n_y_pred)[0])
+                    st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
                 
             else:
                 st.subheader('Please enter a text!')
