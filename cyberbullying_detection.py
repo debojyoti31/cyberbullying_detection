@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-!git clone --depth=1 https://github.com/twintproject/twint.git
-!cd twint
-!pip3 install . -r requirements.txt
 # In[1]:
 
 from deep_translator import GoogleTranslator
