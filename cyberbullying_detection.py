@@ -3,13 +3,17 @@
 
 # In[1]:
 
-
+from deep_translator import GoogleTranslator
+import nest_asyncio
+import twint
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import nltk
 import re
 import string # from some string manipulation tasks
+from collections import Counter
 
 from string import punctuation # solving punctuation problems
 from nltk.corpus import stopwords # stop words in sentences
@@ -532,6 +536,9 @@ vec = pickle.load(open('count_vectorizer.pkl', 'rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 fit_lenc = pickle.load(open('fit_lenc.pkl', 'rb'))
 
+n_vec = pickle.load(open('n_count_vectorizer.pkl', 'rb'))
+n_model = pickle.load(open('n_model.pkl', 'rb'))
+n_fit_lenc = pickle.load(open('n_fit_lenc.pkl', 'rb'))
 
 
 st.set_page_config(page_title="cyberbullying Detection", page_icon=":rotating_light:", layout="wide")
@@ -547,38 +554,99 @@ with st.container():
         st.subheader("Hi, I am Debojyoti :wave:")
         st.write(
             """
-            This is a NLP Model trained on [47000 tweets](https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification) labelled according to the class of Cyberbullying:
+            This is a NLP Model trained on 50000 tweets labelled according to the class of Cyberbullying:
 
             - Age
             - Ethnicity
             - Gender
             - Religion
+            - Other Cyberbullying 
             - Not Cyberbullying  
             """
         )
         st.write("[Learn More about Cyberbullying >](https://www.unicef.org/end-violence/how-to-stop-cyberbullying)")
 
     with right_column:
-        input_text = txt = st.text_area('**Text to detect**', '''Love Conquers All.''')
-        if st.button('Predict'):
-            if input_text != '':
-                
-                input_text = preprocess_text(input_text)
-                st.write('Keywords :',  ', '.join(input_text.split())  )
 
-                
-                input_text = vec.transform([input_text]).toarray()
 
-                # predict
-                y_pred = model.predict(input_text)
 
-                # display
-                st.write('**:red[Cyberbullying Type :]**')
-                st.subheader(fit_lenc.inverse_transform(y_pred)[0])
-                st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
-                
-            else:
-                st.subheader('Please enter a text!')
+
+
+
+
+
+
+        option = st.selectbox('Select Input Type',('Single Text', 'Twitter Username'))
+        
+        if option == 'Single Text':
+            input_text = st.text_area('**Text to detect**', '''Love Conquers All.''')
+            if st.button('Predict'):
+                if input_text != '':
+                    
+                    input_text = preprocess_text(input_text)
+                    st.write('Keywords :',  ', '.join(input_text.split())  )
+
+                    
+                    input_text1 = vec.transform([input_text]).toarray()
+
+                    # predict
+                    y_pred = model.predict(input_text1)
+
+                    # display
+                    st.write('**:red[Cyberbullying Type :]**')
+                    st.subheader(fit_lenc.inverse_transform(y_pred)[0])
+                    st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
+                    
+                else:
+                    st.subheader('Please enter a text!')
+        
+        
+
+
+
+        
+        if option == 'Twitter Username':
+
+            id = st.text_area('**Username without @**', '''eg - ani31love''')
+
+            if st.button('Predict'):
+                if id != '':
+
+                    # nest_asyncio.apply()
+                    c = twint.Config()
+                    c.Username = id
+                    c.Pandas = True
+                    c.Limit = 100
+                    twint.run.Search(c)
+                    df = twint.storage.panda.Tweets_df
+
+                    for i in range(len(df.tweet)):
+                        if df.tweet.iloc[i] != 'en':
+                            df.tweet.iloc[i] = GoogleTranslator(source='auto', target='en').translate(df.tweet.iloc[i])
+                    df.tweet =  [preprocess_text(text) for text in df.tweet.values]
+
+
+                    list_input = vec.transform(df.tweet.values).toarray()
+                    y_pred = model.predict(list_input)
+                    pred_list = fit_lenc.inverse_transform(y_pred).tolist()
+
+                    fig, ax = plt.subplots()
+                    ax.pie(Counter(pred_list).values() , labels = Counter(pred_list).keys())
+
+                    st.pyplot(fig)
+                    
+                else:
+                    st.subheader('Please enter a text!')
+
+
+
+
+
+
+
+
+
+
 
 with st.container():
     st.write("[Get In Touch With Me! :globe_with_meridians:](https://debojyoti31.github.io/)")
