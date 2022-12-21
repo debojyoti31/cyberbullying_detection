@@ -631,6 +631,7 @@ with st.container():
                     ax.pie(Counter(pred_list).values() , labels = Counter(pred_list).keys(), autopct='%1.1f%%',pctdistance=0.8)
 
                     st.pyplot(fig)
+                    st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
                     
                 else:
                     st.subheader('Please enter a text!')
