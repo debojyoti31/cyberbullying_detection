@@ -456,6 +456,14 @@ def remove_stopwords(text):
 
 # In[6]:
 
+def remove_nonetype(text):
+    string = ""
+    for word in text.split(" "):
+        if type(word) == None:
+            continue
+        else:
+            string = string + " " + word
+    return string
 
 def remove_links(text):
     remove_https = re.sub(r'http\S+', '', text)
@@ -513,7 +521,7 @@ def lemmatize(sentence):
 
 
 def preprocess_text(text):
-    text=normalize_spaces(text)
+    text=remove_nonetype(text)
     text=convert_emoji(text)
     # text=correct_word(text)
     text=remove_stopwords(text)
@@ -524,6 +532,7 @@ def preprocess_text(text):
     text=remove_accents(text)
     text=remove_specials(text)
     text=lemmatize(text)
+    text=normalize_spaces(text)
     return text
 
 
