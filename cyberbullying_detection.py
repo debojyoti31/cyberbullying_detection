@@ -545,6 +545,7 @@ with st.container():
     with left_column:
 
         st.subheader("Hi, I am Debojyoti :wave:")
+        st.write("[:globe_with_meridians:  My Website  :globe_with_meridians:](https://debojyoti31.github.io/)")
         st.write(
             """
             This is a NLP Model trained on 50000 tweets labelled according to the class of Cyberbullying:
@@ -558,7 +559,7 @@ with st.container():
         )
         st.write("[Learn More about Cyberbullying >](https://www.unicef.org/end-violence/how-to-stop-cyberbullying)")
         st.write('---')
-        st.write("[:globe_with_meridians:  My Website  :globe_with_meridians:](https://debojyoti31.github.io/)")
+        
 
     with right_column:
 
