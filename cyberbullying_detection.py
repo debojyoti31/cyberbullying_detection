@@ -605,7 +605,7 @@ with st.container():
 
 
             num = st.slider('Number of Tweets', 100, 1000, 25)
-            id = st.text_area('**Username without @**', '''imessi''')
+            id = st.text_input('**Username without @**', '''imessi''')
 
             if st.button('Predict'):
                 st.write(':red[Scroll Down to see Result] :arrow_double_down:')
