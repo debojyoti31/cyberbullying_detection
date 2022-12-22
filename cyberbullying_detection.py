@@ -557,6 +557,8 @@ with st.container():
             """
         )
         st.write("[Learn More about Cyberbullying >](https://www.unicef.org/end-violence/how-to-stop-cyberbullying)")
+        st.write('---')
+        st.write("[:globe_with_meridians:  My Website  :globe_with_meridians:](https://debojyoti31.github.io/)")
 
     with right_column:
 
@@ -639,13 +641,3 @@ with st.container():
 
 
 
-
-
-
-
-
-
-
-
-with st.container():
-    st.write("[Get In Touch With Me! :globe_with_meridians:](https://debojyoti31.github.io/)")
