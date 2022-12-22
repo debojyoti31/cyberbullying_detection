@@ -617,25 +617,29 @@ with st.container():
                         tweets_list1.append([tweet.content, tweet.lang])                       
                     df = pd.DataFrame(tweets_list1, columns=['tweet', 'lang'])
                     df.dropna(inplace=True)
-                    convert_emoji()
-                    for i in range(len(df.tweet)):
-                        if df.lang.iloc[i] != 'en':
-                            df.tweet.iloc[i] = GoogleTranslator(source='auto', target='en').translate(df.tweet.iloc[i])
-                    df.tweet =  [preprocess_text(text) for text in df.tweet.values]
-                    st.write('Translated Tweet Keywords :')
-                    df.dropna(inplace=True)
-                    st.dataframe(df.tweet)
+                    if df.shape[0] == 0:
+                        st.write('**:red[Can Not Scrape Twitter Account]**')
+                        st.write('**:red[Either Wrong Username Given or Secuirity Protected Account ]**')
+                    else:
+                        convert_emoji()
+                        for i in range(len(df.tweet)):
+                            if df.lang.iloc[i] != 'en':
+                                df.tweet.iloc[i] = GoogleTranslator(source='auto', target='en').translate(df.tweet.iloc[i])
+                        df.tweet =  [preprocess_text(text) for text in df.tweet.values]
+                        st.write('Translated Tweet Keywords :')
+                        df.dropna(inplace=True)
+                        st.dataframe(df.tweet)
 
 
-                    list_input = vec.transform(df.tweet.values).toarray()
-                    y_pred = model.predict(list_input)
-                    pred_list = fit_lenc.inverse_transform(y_pred).tolist()
+                        list_input = vec.transform(df.tweet.values).toarray()
+                        y_pred = model.predict(list_input)
+                        pred_list = fit_lenc.inverse_transform(y_pred).tolist()
 
-                    fig, ax = plt.subplots()
-                    ax.pie(Counter(pred_list).values() , labels = Counter(pred_list).keys(), autopct='%1.1f%%',pctdistance=0.8)
+                        fig, ax = plt.subplots()
+                        ax.pie(Counter(pred_list).values() , labels = Counter(pred_list).keys(), autopct='%1.1f%%',pctdistance=0.8)
 
-                    st.pyplot(fig)
-                    st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
+                        st.pyplot(fig)
+                        st.caption('This is only a Prediction based on Machine Learning, it may not be accurate.')
                     
                 else:
                     st.subheader('Please enter a text!')
