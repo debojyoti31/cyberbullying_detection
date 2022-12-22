@@ -557,7 +557,7 @@ with st.container():
             - Not Cyberbullying  
             """
         )
-        st.write("[Learn More about Cyberbullying >](https://www.unicef.org/end-violence/how-to-stop-cyberbullying)")
+        st.write("[Learn More about Cyberbullying](https://www.unicef.org/end-violence/how-to-stop-cyberbullying)")
         st.write('---')
         
 
