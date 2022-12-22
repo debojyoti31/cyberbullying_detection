@@ -618,8 +618,8 @@ with st.container():
                     df = pd.DataFrame(tweets_list1, columns=['tweet', 'lang'])
                     df.dropna(inplace=True)
                     if df.shape[0] == 0:
-                        st.write('**:red[Can Not Scrape Twitter Account]**')
-                        st.write('**:red[Either Wrong Username Given or Secuirity Protected Account ]**')
+                        st.write('**:red[Can Not Scrape Twitter Account !!]**')
+                        st.write('**:red[Either Wrong Username Given or Secuirity Protected Account !!! ]**')
                     else:
                         convert_emoji()
                         for i in range(len(df.tweet)):
