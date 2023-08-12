@@ -1,5 +1,5 @@
 streamlit==1.15.2
-snscrape
+snscrape==0.4.3.20220106
 numpy
 twint
 pandas>=0.23.0
