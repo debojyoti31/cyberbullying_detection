@@ -1,10 +1,10 @@
-streamlit=1.15.2
+streamlit==1.15.2
 snscrape
 numpy
 twint
 pandas>=0.23.0
 matplotlib
-scikit-learn=1.1.3
+scikit-learn==1.1.3
 seaborn
 nltk
 regex
